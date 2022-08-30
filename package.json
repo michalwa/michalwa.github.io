@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@tailwindcss/typography": "^0.5.4",
     "autoprefixer": "^10.4.8",
     "cssnano": "^5.1.13",
     "postcss": "^8.4.16",
