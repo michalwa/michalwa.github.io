@@ -1,2 +1,4 @@
-- name: github
-  url: https://github.com/michalwa
+- url: https://github.com/michalwa
+  icon: fa-brands fa-github
+- url: https://t.me/michalwaw
+  icon: fa-brands fa-telegram

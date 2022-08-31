@@ -1,11 +1,11 @@
-<nav class="bg-slate-50 dark:bg-slate-700 mb-10">
-  <ul class="flex flex-row flex-nowrap">
+<nav class="mb-10">
+  <ul class="container mx-auto flex flex-row flex-nowrap items-stretch">
     <li class="mr-auto">
       {% include nav_link.html url=site.baseurl label="michalwa" %}
     </li>
     {% for link in site.data.contact_links %}
       <li>
-        {% include nav_link.html url=link.url label=link.name %}
+        {% include nav_link.html url=link.url icon=link.icon label=link.label target="_blank" %}
       </li>
     {% endfor %}
   </ul>
