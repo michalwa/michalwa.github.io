@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "iosevka-custom";
+@import "vendor/iosevka-custom";
 
-@import "rouge_base16_light";
+@import "vendor/rouge_base16_light";
 @media (prefers-color-scheme: dark) {
-  @import "rouge_base16_dark";
+  @import "vendor/rouge_base16_dark";
 }
 
 h1 { @apply font-bold text-4xl my-6; }
