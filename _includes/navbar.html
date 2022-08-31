@@ -1,7 +1,10 @@
 <nav class="mb-10">
   <ul class="container mx-auto flex flex-row flex-nowrap items-stretch">
-    <li class="mr-auto">
+    <li>
       {% include nav_link.html url=site.baseurl label="michalwa" %}
+    </li>
+    <li class="mr-auto text-slate-500 dark:text-zinc-500">
+      {% include nav_link.html url="/posts" label="posts" %}
     </li>
     {% for link in site.data.contact_links %}
       <li>
