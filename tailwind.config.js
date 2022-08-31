@@ -13,6 +13,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ["IBM Plex Sans"],
+      mono: ["Iosevka Custom Web"],
     },
     extend: {},
   },

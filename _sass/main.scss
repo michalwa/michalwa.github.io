@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "iosevka-custom";
+
+@import "rouge_base16_light";
+@media (prefers-color-scheme: dark) {
+  @import "rouge_base16_dark";
+}
+
 h1 { @apply font-bold text-4xl my-6; }
 h2 { @apply text-2xl my-4; }
 h3 { @apply text-xl my-2; }
@@ -15,5 +22,10 @@ h6 { @apply text-xs uppercase; }
 
 .card {
   @apply rounded-md border-2 border-transparent hover:border-slate-200
-         transition-all dark:hover:border-zinc-800;
+         dark:hover:border-zinc-800 transition-all;
+}
+
+pre {
+  @apply my-5 rounded-md border-2 border-slate-200 dark:border-zinc-800
+         p-3;
 }

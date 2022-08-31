@@ -8,10 +8,10 @@ title:     Posts
 
 <div class="flex flex-col gap-5">
   {% for post in site.posts %}
-    <div
-      class="card px-5 py-4 cursor-pointer"
-      onclick="location = '{{ post.url }}'">
-      <small class="text-dim">{{ post.date | date:"%Y-%m-%d" }}</small>
+    <div class="card px-5 py-4 cursor-pointer" onclick="location = '{{ post.url }}'">
+      <small class="text-dim">
+        {{ post.date | date_to_long_string: "ordinal" }}
+      </small>
       <h2 class="mt-0">{{ post.title }}</h2>
       <div class="relative text-dim">
         {{ post.excerpt }}
