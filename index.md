@@ -1,13 +1,8 @@
 ---
 layout: default
-title: "Happy Jekylling!"
+title: "Hi there 👋"
 ---
 
-# You're ready to go!
-## You're ready to go!
-### You're ready to go!
-#### You're ready to go!
-##### You're ready to go!
-###### You're ready to go!
+# {{ page.title }}
 
 Start developing your Jekyll website.

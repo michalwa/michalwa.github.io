@@ -8,6 +8,7 @@ module.exports = {
     "./*.md",
     "./*.html",
   ],
+  darkMode: "media",
   theme: {
     fontFamily: {
       sans: ["IBM Plex Sans"],

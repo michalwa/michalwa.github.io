@@ -11,7 +11,8 @@
 
     <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
   </head>
-  <body>
+  <body class="bg-slate-100 dark:bg-slate-800 dark:text-gray-100">
+    {% include navbar.html %}
     <div class="max-w-prose mx-auto mt-5">
       {{ content }}
     </div>
