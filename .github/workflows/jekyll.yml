@@ -10,18 +10,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: ruby/setup-ruby@v1
         with:
-          node-version: "16"
-      - uses: actions/cache@v2
+          bundler-cache: true
+      - name: Setup Node
+        uses: actions/setup-node@v2
         with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-      - uses: helaili/jekyll-action@v2
+          node-version: '16'
+      - run: yarn install
+      - name: Build site
+        uses: limjh16/jekyll-action-ts@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          target_branch: "gh-pages"
-        env:
-          JEKYLL_ENV: production
+          enable_cache: true
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
