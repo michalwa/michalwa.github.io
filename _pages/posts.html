@@ -8,7 +8,7 @@ title:     Posts
 
 <div class="flex flex-col gap-5">
   {% for post in site.posts %}
-    <div class="card px-5 py-4 cursor-pointer" onclick="location = '{{ post.url }}'">
+    <a class="card px-5 py-4 cursor-pointer" href="{{ post.url }}">
       <small class="text-dim">
         {{ post.date | date_to_long_string: "ordinal" }}
       </small>
@@ -18,7 +18,7 @@ title:     Posts
         <div class="absolute bottom-0 w-full h-1/2
           bg-gradient-to-t from-slate-100  dark:from-zinc-900"></div>
       </div>
-    </div>
+    </a>
   {% else %}
     <p class="text-dim">nothing here yet 💀</p>
   {% endfor %}

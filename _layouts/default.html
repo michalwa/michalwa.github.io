@@ -19,8 +19,10 @@
   </head>
   <body class="bg-slate-100 dark:bg-zinc-900 dark:text-gray-100">
     {% include navbar.html %}
-    <div class="max-w-prose mx-auto mt-5">
-      {{ content }}
+    <div class="flex flex-column justify-center">
+      <div class="flex-grow max-w-prose mx-10 mt-5">
+        {{ content }}
+      </div>
     </div>
   </body>
 </html>
