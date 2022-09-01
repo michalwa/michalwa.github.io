@@ -4,3 +4,6 @@ title: "michalwa"
 
 include: ["_pages"]
 permalink: pretty
+
+plugins:
+  - jekyll-postcss-v2

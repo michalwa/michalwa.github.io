@@ -13,17 +13,16 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - name: Setup Node
-        uses: actions/setup-node@v2
+      - uses: actions/setup-node@v2
         with:
           node-version: '16'
       - run: yarn install
-      - name: Build site
-        uses: limjh16/jekyll-action-ts@v2
+      - uses: limjh16/jekyll-action-ts@v2
         with:
           enable_cache: true
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        env:
+          JEKYLL_ENV: production
+      - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./_site
