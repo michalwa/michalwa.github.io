@@ -3,7 +3,10 @@ baseurl: ""
 title: "michalwa"
 
 include: ["_pages"]
-permalink: pretty
+exclude:
+  - package.json
+  - yarn.lock
+  - postcss.config.js
+  - tailwind.config.js
 
-plugins:
-  - jekyll-postcss-v2
+permalink: pretty
