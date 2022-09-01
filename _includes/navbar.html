@@ -1,7 +1,8 @@
 <nav class="mb-10">
   <ul class="container mx-auto flex flex-row flex-nowrap items-stretch">
     <li>
-      {% include nav_link.html url=site.baseurl label="michalwa" %}
+      {% capture home_url %}/{{ site.baseurl }}{% endcapture %}
+      {% include nav_link.html url=home_url label="michalwa" %}
     </li>
     <li class="mr-auto text-dim">
       {% include nav_link.html url="/posts" label="posts" %}
