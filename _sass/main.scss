@@ -31,6 +31,12 @@ body::before {
   pointer-events: none;
 }
 
+@media print {
+  body:before {
+    display: none;
+  }
+}
+
 main,
 nav {
   max-width: 100ch;
