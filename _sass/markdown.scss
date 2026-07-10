@@ -1,0 +1,71 @@
+.markdown-content {
+  h1 {
+    font-family: $font-serif;
+    font-weight: 600;
+    font-size: 24pt;
+  }
+
+  p,
+  li {
+    line-height: 1.5;
+    margin-block: 0.5em;
+  }
+
+  code {
+    font-family: $font-monospace;
+    color: $macaroni-and-cheese;
+    margin-inline: 0.1em;
+  }
+
+  pre {
+    line-height: 1.4;
+    padding-left: 1rem;
+
+    > code {
+      margin-inline: 0;
+      color: inherit;
+    }
+
+    &.highlight {
+      .k,
+      .nb {
+        color: $bright-lilac;
+      }
+      .ss,
+      .nf {
+        color: $french-sky-blue;
+      }
+      .nv {
+        color: $violet-web;
+      }
+      .p,
+      .c1 {
+        color: $davys-grey;
+      }
+      .m,
+      .s2 {
+        color: $macaroni-and-cheese;
+      }
+    }
+  }
+
+  p:has(> img) {
+    text-align: center;
+    margin-block: 1rem;
+  }
+
+  img {
+    max-width: 80ch;
+  }
+}
+
+.heading-anchor {
+  font-family: $font-serif;
+  color: $davys-grey;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+:hover > .heading-anchor {
+  opacity: 1;
+}

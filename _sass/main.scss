@@ -1,0 +1,158 @@
+$font-sans: "Source Sans 3", sans-serif;
+$font-serif: "Baskervville", serif;
+$font-monospace: "Iosevka Custom", monospace;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  scrollbar-gutter: stable;
+}
+
+body {
+  font-family: $font-sans;
+  font-size: 12pt;
+  background: $rich-black-fogra-39;
+  color: $manatee;
+  position: relative;
+  min-height: 100%;
+  margin: 0;
+  padding-top: 1rem;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  filter: url("#noise-texture");
+  pointer-events: none;
+}
+
+main,
+nav {
+  max-width: 100ch;
+  margin-inline: auto;
+}
+
+main {
+  padding-bottom: 3rem;
+  animation: fade-in 0.5s;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+nav {
+  border-bottom: 1pt solid $dark-liver;
+
+  a {
+    font-family: $font-monospace;
+    font-size: 14pt;
+    display: inline-block;
+    margin-block: 0.5em;
+    color: $davys-grey;
+  }
+}
+
+a {
+  text-decoration: none;
+  transition: color 0.1s;
+  color: inherit;
+
+  &:hover {
+    color: $french-sky-blue;
+  }
+}
+
+.display {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+  gap: 0.5rem;
+  margin-block: 15rem;
+
+  > * {
+    margin: 0;
+  }
+
+  &__handle {
+    font-family: $font-monospace;
+    font-size: 22pt;
+    color: $french-sky-blue;
+
+    &::before {
+      content: "@";
+      color: $dark-liver;
+    }
+  }
+
+  &__full-name {
+    font-family: $font-serif;
+    font-weight: 500;
+    font-size: 28pt;
+  }
+
+  &__links {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0;
+    margin-top: 0.1rem;
+
+    a {
+      color: $davys-grey;
+
+      &:hover {
+        color: $macaroni-and-cheese;
+      }
+    }
+
+    .bi {
+      font-size: 18pt;
+    }
+  }
+}
+
+h2 {
+  font-family: $font-sans;
+  font-weight: 600;
+  font-size: 20pt;
+  border-bottom: 1pt solid $dark-liver;
+  padding-bottom: 0.2em;
+  margin-bottom: 0.5em;
+}
+
+.post-preview {
+  padding-block: 0.5rem;
+  padding-left: 1rem;
+
+  &__date {
+    font-family: $font-monospace;
+    font-size: 12pt;
+    margin-left: -2ch;
+
+    &::before {
+      content: "*";
+      color: $dark-liver;
+    }
+  }
+
+  &__title {
+    font-family: $font-sans;
+    font-weight: 600;
+    font-size: 16pt;
+    margin-top: 0.2em;
+    margin-bottom: 0;
+  }
+}

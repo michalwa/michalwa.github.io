@@ -1,0 +1,33 @@
+---
+layout: default
+title: Michał Wawrzynowicz
+---
+
+<hgroup class="display">
+  <p class="display__handle">{{ site.data.info.handle }}</p>
+  <h1 class="display__full-name">{{ site.data.info.full_name }}</h1>
+  <ul class="display__links">
+    {% for link in site.data.info.links %}
+      <li>
+        <a href="{{ link.url }}" target="_blank">
+          <i class="bi bi-{{ link.icon }}"></i>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</hgroup>
+<section id="blog">
+  <h2 class="section__header">Blog</h2>
+  <div class="post-previews">
+    {% for post in site.posts %}
+      <article class="post-preview">
+        <time class="post-preview__date" datetime="{{ post.date }}">
+          {{ post.date | date_to_string: "ordinal", "US" }}
+        </time>
+        <h3 class="post-preview__title">
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </h3>
+      </article>
+    {% endfor %}
+  </div>
+</section>

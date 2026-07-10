@@ -1,0 +1,48 @@
+---
+---
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ page.title }} &mdash; {{ site.data.info.title }}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css"
+      integrity="sha512-t7Few9xlddEmgd3oKZQahkNI4dS6l80+eGEzFQiqtyVYdvcSG2D3Iub77R20BdotfRPA9caaRkg1tyaJiPmO0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body>
+    <div class="nav-container">
+      <nav>
+        <a href="/">{{ site.data.info.handle }}</a>
+      </nav>
+    </div>
+    <main>{{ content }}</main>
+    <svg width="0" height="0" style="position: absolute">
+      <filter id="noise-texture">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.6"
+          numOctaves="2"
+          seed="0"
+          stitchTiles="stitch"
+        />
+        <feColorMatrix type="saturate" values="0" />
+        <feComponentTransfer>
+          <feFuncA type="discrete" tableValues="0 0.03" />
+        </feComponentTransfer>
+        <feBlend mode="overlay" in="SourceGraphic" />
+      </filter>
+    </svg>
+  </body>
+</html>
