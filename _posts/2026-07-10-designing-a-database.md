@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Designing a Backing Store for a Prolog-based PKM Application
+title: Designing a Database for a Prolog-based PKM Application
 ---
 
-# Designing a Backing Store for a Prolog-based PKM Application
+# Designing a Database for a Prolog-based PKM Application
 
 ## Introduction
 
