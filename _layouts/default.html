@@ -13,7 +13,13 @@
       rel="alternate"
       type="application/atom+xml"
       title="michalwa - Personal Blog"
-      href="/feed.xml"
+      href="{{ "/feed.xml" | absolute_url }}"
+    />
+    <link
+      rel="alternate"
+      type="application/json"
+      title="{{ site.title }}"
+      href="{{ "/feed.json" | absolute_url }}"
     />
     <title>{{ page.title }} &mdash; {{ site.data.info.title }}</title>
 
@@ -36,7 +42,7 @@
     <header class="nav-container">
       <nav>
         <a href="/">{{ site.data.info.title }}</a>
-        <div class="nav-end">
+        <div class="nav__buttons">
           <a
             href="/feed.xml"
             class="icon-button"

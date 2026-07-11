@@ -76,10 +76,12 @@ nav {
     margin-block: 0.5em;
     color: var(--theme-nav-link-foreground);
   }
+}
 
-  .nav-end {
-    margin-left: auto;
-  }
+.nav__buttons {
+  margin-left: auto;
+  display: flex;
+  gap: 0.6rem;
 }
 
 a {
@@ -244,6 +246,7 @@ h2 {
   color: var(--theme-icon-link-foreground);
   cursor: pointer;
   transition: color 0.1s;
+  padding: 0;
 
   &:hover {
     color: var(--theme-icon-link-foreground-hover);
