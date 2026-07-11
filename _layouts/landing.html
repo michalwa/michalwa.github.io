@@ -17,17 +17,41 @@ layout: default
   <div class="display__message">{{ content }}</div>
 </hgroup>
 <section id="blog">
-  <h2 class="section__header">Blog</h2>
-  <div class="post-previews">
-    {% for post in site.posts %}
-      <article class="post-preview">
-        <time class="post-preview__date" datetime="{{ post.date }}">
-          {{ post.date | date_to_long_string: "ordinal", "US" }}
-        </time>
-        <h3 class="post-preview__title">
-          <a href="{{ post.url }}">{{ post.title }}</a>
-        </h3>
-      </article>
-    {% endfor %}
+  <div class="columns">
+    <div class="post-previews">
+      <h2 class="section__header">Blog</h2>
+      {% for post in site.posts %}
+        <article class="post-preview">
+          <time class="post-preview__date" datetime="{{ post.date }}">
+            {{ post.date | date_to_long_string: "ordinal", "US" }}
+          </time>
+          <h3 class="post-preview__title">
+            <a href="{{ post.url }}">{{ post.title }}</a>
+          </h3>
+        </article>
+      {% endfor %}
+    </div>
+    <div class="projects">
+      <h2 class="section__header">Projects</h2>
+      {% for project in site.projects %}
+        <article class="project-preview">
+          <header class="project-preview__header">
+            <h3 class="project-preview__title">{{ project.name }}</h3>
+            <ul class="project-preview__links">
+              {% for link in project.links %}
+                <li>
+                  <a href="{{ link.url }}" target="_blank" aria-label="{{ link.label }}">
+                    <i class="bi bi-{{ link.icon }}"></i>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </header>
+          <div class="project-preview__description">
+            {{ project.content }}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
   </div>
 </section>

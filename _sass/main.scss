@@ -148,6 +148,16 @@ a {
   }
 }
 
+.columns {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+
+  > * {
+    flex-basis: 100%;
+  }
+}
+
 h2 {
   font-family: var(--font-sans);
   font-weight: 600;
@@ -159,29 +169,30 @@ h2 {
 
 .post-preview {
   padding-block: 0.5rem;
-  padding-left: 1rem;
+  padding-left: 3ch;
   position: relative;
 
   &::before {
     position: absolute;
     left: 0;
-    content: "@||||||||||||||||";
-    width: 1ch;
+    content: "├─│ │ │ │ │ │ │ │ │ │ │ │ │ │ │ │ ";
+    white-space: pre-wrap;
+    width: 2ch;
     height: 100%;
     overflow-y: hidden;
     overflow-wrap: break-word;
     font-family: var(--font-monospace);
     font-size: 12pt;
-    line-height: var(--line-height-monospace);
     color: var(--theme-muted-foreground);
   }
 
   &:last-child:before {
-    content: "@";
+    content: "└─";
   }
 
   &__date {
     font-family: var(--font-monospace);
+    font-weight: var(--font-weight-monospace);
     font-size: 12pt;
   }
 
@@ -191,6 +202,38 @@ h2 {
     font-size: 16pt;
     margin-top: 0.2em;
     margin-bottom: 0;
+  }
+}
+
+.project-preview {
+  padding-block: 0.5rem;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__links {
+    list-style: none;
+    padding: 0;
+    margin-left: 0.5rem;
+    margin-block: 0;
+  }
+
+  &__title {
+    margin: 0;
+    font-family: var(--font-monospace);
+    font-weight: var(--font-weight-monospace);
+    font-size: 12pt;
+  }
+
+  &__description {
+    margin-top: 0.5rem;
+
+    > p {
+      margin: 0;
+    }
   }
 }
 
@@ -225,6 +268,7 @@ h2 {
 
   &__date {
     font-family: var(--font-monospace);
+    font-weight: var(--font-weight-monospace);
     font-size: 12pt;
   }
 }

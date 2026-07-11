@@ -16,4 +16,4 @@ links:
     url: mailto://michalwa2003@gmail.com
 ---
 
-Hi there! This is my personal website and blog where I hope to share thoughts on programming, music, philosophy, and other interesting things.
+Hi there! This is my personal website and blog where I hope to share personal projects and thoughts on programming, music, philosophy, and other interesting things.
