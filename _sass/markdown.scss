@@ -3,11 +3,12 @@
     font-family: var(--font-serif);
     font-weight: 600;
     font-size: 24pt;
+    margin-bottom: 1em;
   }
 
   p,
   li {
-    line-height: 1.5;
+    line-height: var(--line-height-prose);
     margin-block: 0.5em;
 
     a {
@@ -31,7 +32,7 @@
   }
 
   pre {
-    line-height: 1.4;
+    line-height: var(--line-height-monospace);
     padding-left: 1rem;
 
     > code {

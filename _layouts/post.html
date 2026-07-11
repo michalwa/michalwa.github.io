@@ -2,8 +2,11 @@
 layout: default
 ---
 
-<!-- TODO: Display date -->
-
-<article class="markdown-content">
+<article class="post markdown-content">
+  <div class="post__header">
+    <time datetime="{{ page.date }}" class="post__date">
+      {{ page.date | date_to_long_string: "ordinal", "US" }}
+    </time>
+  </div>
   {% include anchor_headings.html html=content anchorBody="#" anchorClass="heading-anchor" %}
 </article>
