@@ -1,0 +1,99 @@
+@use "theme/sequoia-moonlight";
+@use "theme/rose-pine-dawn";
+
+@mixin theme-dark {
+  --font-sans: "Source Sans 3", sans-serif;
+  --font-serif: "Baskervville", serif;
+  --font-monospace: "Iosevka Custom", monospace;
+
+  --font-weight: 400;
+  --font-weight-bold: 700;
+  --font-weight-monospace: 400;
+
+  --theme-background: #{sequoia-moonlight.$rich-black-fogra-39};
+  --theme-foreground: #{sequoia-moonlight.$manatee};
+  --theme-accent-foreground: #{sequoia-moonlight.$french-sky-blue};
+  --theme-nav-link-foreground: #{sequoia-moonlight.$davys-grey};
+  --theme-nav-link-foreground-hover: #{sequoia-moonlight.$french-sky-blue};
+  --theme-icon-link-foreground: #{sequoia-moonlight.$davys-grey};
+  --theme-icon-link-foreground-hover: #{sequoia-moonlight.$macaroni-and-cheese};
+  --theme-muted-foreground: #{sequoia-moonlight.$dark-liver};
+  --theme-border: 1pt solid #{sequoia-moonlight.$dark-liver};
+  --theme-markdown-link-foreground: #{sequoia-moonlight.$french-sky-blue};
+  --theme-markdown-code-foreground: #{sequoia-moonlight.$macaroni-and-cheese};
+
+  --theme-syntax-highlight-1: #{sequoia-moonlight.$bright-lilac};
+  --theme-syntax-highlight-2: #{sequoia-moonlight.$french-sky-blue};
+  --theme-syntax-highlight-3: #{sequoia-moonlight.$violet-web};
+  --theme-syntax-highlight-4: #{sequoia-moonlight.$macaroni-and-cheese};
+  --theme-syntax-highlight-comment: #{sequoia-moonlight.$dark-liver};
+  --theme-syntax-highlight-punctuation: #{sequoia-moonlight.$dark-liver};
+
+  --noise-opacity: 0.07;
+}
+
+@mixin theme-light {
+  --font-weight-bold: 650;
+  --font-weight-monospace: 500;
+
+  --theme-background: #{rose-pine-dawn.$base};
+  --theme-foreground: #{rose-pine-dawn.$text};
+  --theme-accent-foreground: #{rose-pine-dawn.$foam};
+  --theme-nav-link-foreground: #{rose-pine-dawn.$subtle};
+  --theme-nav-link-foreground-hover: #{rose-pine-dawn.$pine};
+  --theme-icon-link-foreground: #{rose-pine-dawn.$subtle};
+  --theme-icon-link-foreground-hover: #{rose-pine-dawn.$love};
+  --theme-muted-foreground: #{rose-pine-dawn.$muted};
+  --theme-border: 1pt solid #{rose-pine-dawn.$subtle};
+  --theme-markdown-link-foreground: #{rose-pine-dawn.$love};
+  --theme-markdown-code-foreground: #{rose-pine-dawn.$pine};
+
+  --theme-syntax-highlight-1: #{rose-pine-dawn.$love};
+  --theme-syntax-highlight-2: #{rose-pine-dawn.$pine};
+  --theme-syntax-highlight-3: #{rose-pine-dawn.$iris};
+  --theme-syntax-highlight-4: #{rose-pine-dawn.$gold};
+  --theme-syntax-highlight-comment: #{rose-pine-dawn.$muted};
+  --theme-syntax-highlight-punctuation: #{rose-pine-dawn.$subtle};
+
+  --noise-opacity: 0.3;
+}
+
+:root {
+  @include theme-dark;
+
+  @media (prefers-color-scheme: light) {
+    @include theme-light;
+  }
+}
+
+.theme-dark {
+  @include theme-dark;
+}
+
+.theme-light {
+  @include theme-light;
+}
+
+.theme-dark .theme-switcher-dark {
+  display: none;
+}
+
+.theme-light .theme-switcher-light {
+  display: none;
+}
+
+body:not(.theme-dark):not(.theme-light) {
+  .theme-switcher-dark {
+    display: none;
+  }
+
+  @media (prefers-color-scheme: light) {
+    .theme-switcher-dark {
+      display: unset;
+    }
+
+    .theme-switcher-light {
+      display: none;
+    }
+  }
+}

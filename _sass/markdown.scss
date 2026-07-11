@@ -1,6 +1,6 @@
 .markdown-content {
   h1 {
-    font-family: $font-serif;
+    font-family: var(--font-serif);
     font-weight: 600;
     font-size: 24pt;
   }
@@ -11,7 +11,7 @@
     margin-block: 0.5em;
 
     a {
-      color: $french-sky-blue;
+      color: var(--theme-markdown-link-foreground);
 
       &:hover {
         text-decoration: underline;
@@ -19,9 +19,14 @@
     }
   }
 
+  strong {
+    font-weight: var(--font-weight-bold);
+  }
+
   code {
-    font-family: $font-monospace;
-    color: $macaroni-and-cheese;
+    font-family: var(--font-monospace);
+    font-weight: var(--font-weight-monospace);
+    color: var(--theme-markdown-code-foreground);
     margin-inline: 0.1em;
   }
 
@@ -37,23 +42,30 @@
     &.highlight {
       .k,
       .nb {
-        color: $bright-lilac;
+        color: var(--theme-syntax-highlight-1);
       }
+
       .ss,
       .nf {
-        color: $french-sky-blue;
+        color: var(--theme-syntax-highlight-2);
       }
+
       .nv {
-        color: $violet-web;
+        color: var(--theme-syntax-highlight-3);
       }
-      .p,
+
       .c1,
       .cm {
-        color: $davys-grey;
+        color: var(--theme-syntax-highlight-comment);
       }
+
+      .p {
+        color: var(--theme-syntax-highlight-punctuation);
+      }
+
       .m,
       .s2 {
-        color: $macaroni-and-cheese;
+        color: var(--theme-syntax-highlight-4);
       }
     }
   }
@@ -69,8 +81,8 @@
 }
 
 .heading-anchor {
-  font-family: $font-serif;
-  color: $davys-grey;
+  font-family: var(--font-serif);
+  color: var(--theme-nav-link-foreground);
   opacity: 0;
   transition: opacity 0.1s;
 }

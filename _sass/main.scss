@@ -1,7 +1,3 @@
-$font-sans: "Source Sans 3", sans-serif;
-$font-serif: "Baskervville", serif;
-$font-monospace: "Iosevka Custom", monospace;
-
 * {
   box-sizing: border-box;
 }
@@ -12,23 +8,28 @@ html {
 }
 
 body {
-  font-family: $font-sans;
+  font-family: var(--font-sans);
   font-size: 12pt;
-  background: $rich-black-fogra-39;
-  color: $manatee;
+  font-weight: var(--font-weight);
+  background: var(--theme-background);
+  color: var(--theme-foreground);
   position: relative;
   min-height: 100%;
   margin: 0;
   padding-top: 1rem;
+  transition: all 0.5s;
 }
 
 body::before {
   content: "";
   position: absolute;
+  z-index: -1;
   inset: 0;
   height: 100%;
   filter: url("#noise-texture");
   pointer-events: none;
+  opacity: var(--noise-opacity);
+  transition: opacity 0.5s;
 }
 
 @media print {
@@ -58,14 +59,21 @@ main {
 }
 
 nav {
-  border-bottom: 1pt solid $dark-liver;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: var(--theme-border);
 
   a {
-    font-family: $font-monospace;
+    font-family: var(--font-monospace);
     font-size: 14pt;
     display: inline-block;
     margin-block: 0.5em;
-    color: $davys-grey;
+    color: var(--theme-nav-link-foreground);
+  }
+
+  .nav-end {
+    margin-left: auto;
   }
 }
 
@@ -75,7 +83,7 @@ a {
   color: inherit;
 
   &:hover {
-    color: $french-sky-blue;
+    color: var(--theme-nav-link-foreground-hover);
   }
 }
 
@@ -91,18 +99,20 @@ a {
   }
 
   &__handle {
-    font-family: $font-monospace;
+    font-family: var(--font-monospace);
     font-size: 22pt;
-    color: $french-sky-blue;
+    color: var(--theme-accent-foreground);
+    transition: all 0.5s;
 
     &::before {
       content: "@";
-      color: $dark-liver;
+      color: var(--theme-muted-foreground);
+      transition: all 0.5s;
     }
   }
 
   &__full-name {
-    font-family: $font-serif;
+    font-family: var(--font-serif);
     font-weight: 500;
     font-size: 28pt;
   }
@@ -117,10 +127,10 @@ a {
     margin-top: 0.1rem;
 
     a {
-      color: $davys-grey;
+      color: var(--theme-icon-link-foreground);
 
       &:hover {
-        color: $macaroni-and-cheese;
+        color: var(--theme-icon-link-foreground-hover);
       }
     }
 
@@ -131,10 +141,10 @@ a {
 }
 
 h2 {
-  font-family: $font-sans;
+  font-family: var(--font-sans);
   font-weight: 600;
   font-size: 20pt;
-  border-bottom: 1pt solid $dark-liver;
+  border-bottom: var(--theme-border);
   padding-bottom: 0.2em;
   margin-bottom: 0.5em;
 }
@@ -144,21 +154,37 @@ h2 {
   padding-left: 1rem;
 
   &__date {
-    font-family: $font-monospace;
+    font-family: var(--font-monospace);
     font-size: 12pt;
     margin-left: -2ch;
 
     &::before {
       content: "*";
-      color: $dark-liver;
+      color: var(--theme-muted-foreground);
     }
   }
 
   &__title {
-    font-family: $font-sans;
+    font-family: var(--font-sans);
     font-weight: 600;
     font-size: 16pt;
     margin-top: 0.2em;
     margin-bottom: 0;
+  }
+}
+
+.icon-button {
+  background: none;
+  border: none;
+  color: var(--theme-icon-link-foreground);
+  cursor: pointer;
+  transition: color 0.1s;
+
+  &:hover {
+    color: var(--theme-icon-link-foreground-hover);
+  }
+
+  > .bi {
+    font-size: 14pt;
   }
 }

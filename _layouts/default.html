@@ -25,6 +25,12 @@
     <div class="nav-container">
       <nav>
         <a href="/">{{ site.data.info.handle }}</a>
+        <div class="nav-end">
+          <button type="button" class="icon-button" onclick="toggleTheme()">
+            <i class="bi bi-moon-fill theme-switcher-dark"></i>
+            <i class="bi bi-sun-fill theme-switcher-light"></i>
+          </button>
+        </div>
       </nav>
     </div>
     <main>{{ content }}</main>
@@ -39,10 +45,11 @@
         />
         <feColorMatrix type="saturate" values="0" />
         <feComponentTransfer>
-          <feFuncA type="discrete" tableValues="0 0.03" />
+          <feFuncA type="discrete" tableValues="0 0.5" />
         </feComponentTransfer>
         <feBlend mode="overlay" in="SourceGraphic" />
       </filter>
     </svg>
+    <script src="/assets/js/theme.js"></script>
   </body>
 </html>
