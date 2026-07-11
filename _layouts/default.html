@@ -5,7 +5,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="application-name" content="{{ site.title }}" />
+    <meta name="description" content="{{ site.description }}" />
+    <meta name="author" content="{{ site.author }}" />
+    <link
+      rel="alternate"
+      type="application/atom+xml"
+      title="michalwa - Personal Blog"
+      href="/feed.xml"
+    />
     <title>{{ page.title }} &mdash; {{ site.data.info.title }}</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,6 +37,14 @@
       <nav>
         <a href="/">{{ site.data.info.title }}</a>
         <div class="nav-end">
+          <a
+            href="/feed.xml"
+            class="icon-button"
+            aria-label="Atom feed"
+            title="Atom feed"
+          >
+            <i class="bi bi-rss"></i>
+          </a>
           <button
             type="button"
             class="icon-button"
@@ -40,9 +59,7 @@
     </header>
     <main>{{ content }}</main>
     <footer>
-      <div class="footer__content">
-        {{ site.data.info.copyright }}
-      </div>
+      <div class="footer__content">{{ site.data.info.copyright }}</div>
     </footer>
 
     <svg width="0" height="0" style="position: absolute">

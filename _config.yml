@@ -1,2 +1,14 @@
+title: "michalwa | Michał Wawrzynowicz"
+author: Michał Wawrzynowicz <michalwa2003@gmail.com>
+url: https://michalwa.github.io
+description: >-
+  Hi there! This is my personal website and blog where I hope to share personal projects and thoughts on programming, music, philosophy, and other interesting things.
+
+plugins:
+  - jekyll-feed
+
 collections:
   - projects
+
+feed:
+  excerpt_only: true
