@@ -48,7 +48,7 @@ layout: default
             </ul>
           </header>
           <div class="project-preview__description">
-            {{ project.content }}
+            {{ project.content | markdownify }}
           </div>
         </article>
       {% endfor %}
