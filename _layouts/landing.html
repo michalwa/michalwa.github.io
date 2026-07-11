@@ -1,20 +1,20 @@
 ---
 layout: default
-title: Michał Wawrzynowicz
 ---
 
 <hgroup class="display">
-  <p class="display__handle">{{ site.data.info.handle }}</p>
-  <h1 class="display__full-name">{{ site.data.info.full_name }}</h1>
+  <p class="display__handle">{{ page.handle }}</p>
+  <h1 class="display__full-name">{{ page.full_name }}</h1>
   <ul class="display__links">
-    {% for link in site.data.info.links %}
+    {% for link in page.links %}
       <li>
-        <a href="{{ link.url }}" target="_blank">
+        <a href="{{ link.url }}" target="_blank" aria-label="{{ link.label }}">
           <i class="bi bi-{{ link.icon }}"></i>
         </a>
       </li>
     {% endfor %}
   </ul>
+  <div class="display__message">{{ content }}</div>
 </hgroup>
 <section id="blog">
   <h2 class="section__header">Blog</h2>

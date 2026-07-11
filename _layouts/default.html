@@ -2,7 +2,7 @@
 ---
 
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>{{ page.title }} &mdash; {{ site.data.info.title }}</title>
@@ -22,18 +22,29 @@
     <link rel="stylesheet" href="/assets/css/styles.css" />
   </head>
   <body>
-    <div class="nav-container">
+    <header class="nav-container">
       <nav>
-        <a href="/">{{ site.data.info.handle }}</a>
+        <a href="/">{{ site.data.info.title }}</a>
         <div class="nav-end">
-          <button type="button" class="icon-button" onclick="toggleTheme()">
+          <button
+            type="button"
+            class="icon-button"
+            onclick="toggleTheme()"
+            title="Toggle theme"
+          >
             <i class="bi bi-moon-fill theme-switcher-dark"></i>
             <i class="bi bi-sun-fill theme-switcher-light"></i>
           </button>
         </div>
       </nav>
-    </div>
+    </header>
     <main>{{ content }}</main>
+    <footer>
+      <div class="footer__content">
+        {{ site.data.info.copyright }}
+      </div>
+    </footer>
+
     <svg width="0" height="0" style="position: absolute">
       <filter id="noise-texture">
         <feTurbulence

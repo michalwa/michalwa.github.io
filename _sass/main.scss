@@ -8,15 +8,17 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 100%;
+  margin: 0;
+  padding-block: 1rem;
   font-family: var(--font-sans);
   font-size: 12pt;
   font-weight: var(--font-weight);
   background: var(--theme-background);
   color: var(--theme-foreground);
-  position: relative;
-  min-height: 100%;
-  margin: 0;
-  padding-top: 1rem;
   transition: all 0.5s;
 }
 
@@ -39,12 +41,14 @@ body::before {
 }
 
 main,
-nav {
+nav,
+.footer__content {
   max-width: 100ch;
   margin-inline: auto;
 }
 
 main {
+  width: 100%;
   padding-bottom: 3rem;
   animation: fade-in 0.5s;
 }
@@ -138,6 +142,10 @@ a {
       font-size: 18pt;
     }
   }
+
+  &__message {
+    max-width: 80ch;
+  }
 }
 
 h2 {
@@ -219,4 +227,15 @@ h2 {
     font-family: var(--font-monospace);
     font-size: 12pt;
   }
+}
+
+footer {
+  margin-top: auto;
+}
+
+.footer__content {
+  border-top: var(--theme-border);
+  color: var(--theme-footer-foreground);
+  padding-block: 1rem;
+  text-align: right;
 }
