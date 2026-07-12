@@ -40,7 +40,7 @@ Now, say you want to list all uncompleted tasks. You would simply use the query:
 
 There’s also other predicates which don’t refer to tags. For instance, you can reason about the creation times of entries (`created(_)`); or execute completely arbitrary Prolog code (`{ ... }`). This naturally includes accessing the file system or making web requests, not that you should necessarily do those things.
 
-Evaluating these kinds of queries in Prolog on its own is trivial. However, it requires that the associations between entries and their tags are available to the Prolog runtime. How can we store this data in a way that is maintainable, efficient to mutate, and available to the Prolog runtime?
+Evaluating these kinds of queries in Prolog on its own is trivial. However, it requires that the associations between entries and their tags are available to the Prolog runtime. This is where the engineering challenge begins. How can we store this data in a way that is maintainable, efficient to mutate, and available to the Prolog runtime?
 
 ## The easy solution
 
@@ -57,7 +57,7 @@ entry_tag(4, thought).
 entry_tag(5, cite("Turing", 1936)).
 ```
 
-I make the rather obvious assumption here that we're interested in storing _parsed tags_ and not _entry content_ to avoid having to parse each entry during search. I leave storage of entry content as a separate question for now, though it would definitely be nice to arrive at a solution which also accounts for it.
+I'm making the rather obvious assumption here that we're interested in storing _parsed tags_ and not _entry content_ to avoid having to parse each entry during search. I leave storage of entry content as a separate question for now, though it would definitely be nice to arrive at a solution which also accounts for it.
 
 The above list of _facts_ defines the predicate `entry_tag/2` (standard notation, `/2` indicates arity) which associates an entry ID with a tag included in the entry. To then retrieve IDs of entries containing the `todo/1` tag, for example, we could use the following Prolog query: `?- entry_tag(E, todo(_))`.
 
@@ -85,13 +85,15 @@ At startup, we would of course have to parse all entries, serialize the ID-tag p
 
 This might seem like a perfect solution at first glance and, to be fair, I have not honestly tested this and verified its performance. It could turn out that for small sets of entries it’s completely viable. However, I immediately got a strong gut feeling that this would not be the way to go.
 
-In a professional setting, I would probably go through the effort of actual prototyping to have concrete measurements to base my judgment on. In my personal project I get to skip that part. Let me try to explain why I felt this way:
+In a professional setting, I would probably go through the effort of actual prototyping to have concrete measurements to base my judgment on. In my personal project I get to skip that part.
 
-- Having to manage state through the Prolog interpreter is cumbersome. All mutations have to go through this layer instead of being written in plain Rust, or even worse, Prolog has to be kept in sync with other external data structures.
-- I make actual performance judgments warily, having skipped actual benchmarking, but I reckon the universal nature of the dynamic database must ultimately prove worse than a custom store tailored to the specifics of how the application operates.
-- In any case, relying on the Prolog database gives limited to no control over the way data is stored. Any future memory/time optimizations would be dependent on the specifics of the Prolog implementation. Prolog implementations do make certain guarantees about search performance and ways to improve it from user code, but still set certain inherent constraints.
-- From an architectural perspective, tying the performance of data storage to Prolog does not seem ideal either, even though the data we're dealing with here is more of a search cache. I would like Prolog to be scoped to only the functionality it is specifically intended to enable in the application.
-- In the near future I would also like to implement things like full-text search integrated into the query interface. I doubt this can be implemented reliably and efficiently in Prolog, and so it will most likely need a native implementation. It would then be nice to keep indexing text consistent with indexing terms, perhaps even reusing certain components between them.
+Let me try to explain why I felt this way:
+
+Having to manage state through the Prolog interpreter would be cumbersome. All mutations would have to go through this layer instead of being written in plain Rust, or even worse, Prolog would have to be kept in sync with other external data structures.
+
+In any case, it's questionable architecturally. Relying on the Prolog database gives limited to no control over the way data is stored. It wouldn't be possible to take advantage of convenient Rust crates / data structures to implement the storage and any potential improvements or additions would be dependent on the specifics of Prolog or even its particular implementation. 
+
+I make actual performance judgments warily, having skipped actual benchmarking, but I reckon the universal nature of the dynamic database would ultimately prove worse than a custom native implementation. Prolog interpreters do provide certain ways to improve performance from the level of user code, but still possess certain inherent constraints.
 
 ## Setup
 
