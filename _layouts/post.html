@@ -2,11 +2,30 @@
 layout: default
 ---
 
+{% contentfor head %}
+  <meta name="og:title" content="{{ page.title }}" />
+  <meta name="og:type" content="article" />
+  <meta name="og:url" content="{{ page.url | absolute_url }}" />
+  <meta
+    name="article:published_time"
+    content="{{ page.date | date_to_xmlschema }}"
+  />
+  <meta name="article:author" content="{{ site.data.info.og_profile_url }}" />
+{% endcontentfor %}
+
 <article class="post markdown-content">
   <div class="post__header">
     <time datetime="{{ page.date }}" class="post__date">
       {{ page.date | date_to_long_string: "ordinal", "US" }}
     </time>
   </div>
-  {% include anchor_headings.html html=content anchorBody="#" anchorClass="heading-anchor" h_min=2 %}
+  {% include anchor_headings.html
+    html=content
+    anchorBody="#"
+    anchorClass="heading-anchor"
+    h_min=2 %}
 </article>
+
+<div class="comments">
+  {% include giscus.html term=page.title %}
+</div>

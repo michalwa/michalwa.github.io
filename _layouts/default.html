@@ -7,7 +7,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="application-name" content="{{ site.title }}" />
-    <meta name="description" content="{{ site.description }}" />
+    <meta name="og:site_name" content="{{ site.title }}" />
+    {% if page.description %}
+      <meta name="description" content="{{ page.description }}" />
+    {% endif %}
     <meta name="author" content="{{ site.author }}" />
     <link
       rel="alternate"
@@ -37,12 +40,14 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="/assets/css/styles.css" />
+
+    {% contentblock head %}
   </head>
   <body>
-    <header class="nav-container">
-      <nav>
+    <header class="page-header">
+      <nav class="page-header__content">
         <a href="/">{{ site.data.info.title }}</a>
-        <div class="nav__buttons">
+        <div class="page-header__buttons">
           <a
             href="/feed.json"
             class="icon-button"
@@ -71,9 +76,9 @@
         </div>
       </nav>
     </header>
-    <main>{{ content }}</main>
-    <footer>
-      <div class="footer__content">{{ site.data.info.copyright }}</div>
+    <main class="page-content">{{ content }}</main>
+    <footer class="page-footer">
+      <div class="page-footer__content">{{ site.data.info.copyright }}</div>
     </footer>
 
     <svg width="0" height="0" style="position: absolute">
@@ -92,6 +97,12 @@
         <feBlend mode="overlay" in="SourceGraphic" />
       </filter>
     </svg>
-    <script src="/assets/js/theme.js"></script>
+    <script type="module">
+      import { toggleTheme, restoreTheme } from "/assets/js/theme.js";
+
+      window.toggleTheme = toggleTheme;
+
+      restoreTheme();
+    </script>
   </body>
 </html>

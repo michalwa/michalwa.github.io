@@ -5,6 +5,7 @@ description: >-
   Hi there! This is my personal website and blog where I hope to share personal projects and thoughts on programming, music, philosophy, and other interesting things.
 
 plugins:
+  - jekyll-contentblocks
   - jekyll-feed
   - jekyll-json-feed
 

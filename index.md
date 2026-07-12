@@ -1,6 +1,8 @@
 ---
 layout: landing
 title: Michał Wawrzynowicz
+description: >-
+  Hi there! This is my personal website and blog where I hope to share personal projects and thoughts on programming, music, philosophy, and other interesting things.
 handle: michalwa
 full_name: Michał Wawrzynowicz
 title: michalwa
@@ -16,4 +18,4 @@ links:
     url: mailto://michalwa2003@gmail.com
 ---
 
-Hi there! This is my personal website and blog where I hope to share personal projects and thoughts on programming, music, philosophy, and other interesting things.
+{{ page.description }}
