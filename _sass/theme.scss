@@ -35,7 +35,7 @@
   --theme-syntax-highlight-comment: #{sequoia-moonlight.$dark-liver};
   --theme-syntax-highlight-punctuation: #{sequoia-moonlight.$dark-liver};
 
-  --noise-opacity: 0.08;
+  --noise-opacity: 0.05;
   --noise-opacity-high-dpi: 0.12;
   --noise-invert: none;
 }
@@ -65,6 +65,7 @@
   --theme-syntax-highlight-punctuation: #{rose-pine-dawn.$subtle};
 
   --noise-invert: invert(100%);
+  --noise-opacity: 0.1;
 }
 
 :root {
