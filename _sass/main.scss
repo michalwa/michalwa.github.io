@@ -29,10 +29,17 @@ body::before {
   z-index: -1;
   inset: 0;
   height: 100%;
-  filter: url("#noise-texture");
+  background: url("/assets/images/noise.webp");
+  background-size: 1024px;
+  filter: var(--noise-invert);
   pointer-events: none;
   opacity: var(--noise-opacity);
   transition: opacity 0.5s;
+
+  @media (min-resolution: 2dppx) {
+    background-size: 512px;
+    opacity: var(--noise-opacity-high-dpi);
+  }
 }
 
 @media print {

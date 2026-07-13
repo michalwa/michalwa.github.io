@@ -14,3 +14,6 @@ collections:
 
 feed:
   excerpt_only: true
+
+exclude:
+  - source_assets

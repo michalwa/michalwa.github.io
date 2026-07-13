@@ -1,17 +1,19 @@
 @use "theme/sequoia-moonlight";
 @use "theme/rose-pine-dawn";
 
-@mixin theme-dark {
+:root {
   --font-sans: "Source Sans 3", sans-serif;
   --font-serif: "Baskervville", serif;
   --font-monospace: "Iosevka Custom", monospace;
 
+  --line-height-prose: 1.5;
+  --line-height-monospace: 1.4;
+}
+
+@mixin theme-dark {
   --font-weight: 400;
   --font-weight-bold: 700;
   --font-weight-monospace: 400;
-
-  --line-height-prose: 1.5;
-  --line-height-monospace: 1.4;
 
   --theme-background: #{sequoia-moonlight.$rich-black-fogra-39};
   --theme-foreground: #{sequoia-moonlight.$manatee};
@@ -33,7 +35,9 @@
   --theme-syntax-highlight-comment: #{sequoia-moonlight.$dark-liver};
   --theme-syntax-highlight-punctuation: #{sequoia-moonlight.$dark-liver};
 
-  --noise-opacity: 0.07;
+  --noise-opacity: 0.08;
+  --noise-opacity-high-dpi: 0.12;
+  --noise-invert: none;
 }
 
 @mixin theme-light {
@@ -60,7 +64,7 @@
   --theme-syntax-highlight-comment: #{rose-pine-dawn.$muted};
   --theme-syntax-highlight-punctuation: #{rose-pine-dawn.$subtle};
 
-  --noise-opacity: 0.3;
+  --noise-invert: invert(100%);
 }
 
 :root {
