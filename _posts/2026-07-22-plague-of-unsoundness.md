@@ -19,7 +19,7 @@ Fortunately, people do seem to have been coming to terms with this in the recent
 
 In my previous post I wrote a bit about static analysis in Ruby. I want to dive deeper into a specific issue I once discovered in Sorbet that has led me to discover a puzzling rabbit hole of language design flaws.
 
-## Arrays of Whatever
+## Arrays of whatever
 
 Take the humble array.
 
@@ -157,7 +157,7 @@ Notice that contravariance is actually what we would prefer for an argument to a
 
 But alas, in TypeScript, Sorbet, RBS-based checkers, and likely many other systems, we cannot change the fact that the array type itself is defined as covariant over the element type.
 
-## On the Right Track
+## On the right track
 
 Perhaps this is controversial, but I think Java implements very competent generics, probably the best I've worked with in an OOP language.
 
