@@ -17,7 +17,7 @@ Knowing the requirements today and allowed to start from scratch, I have no doub
 
 Fortunately, people do seem to have been coming to terms with this in the recent decade or so. Not so fortunately, the gradual process has left the state of static typing in most languages burdened with numerous historical compromises, often set in stone for backwards compatibility reasons, as well as compromise-oriented mindsets.
 
-In my previous post I wrote a bit about static analysis in Ruby. I want to dive deeper into a specific issue I once discovered in Sorbet that has led me to discover a puzzling rabbit hole of language design flaws.
+In my [previous post]({% post_url 2026-07-13-ruby-learnings %}) I wrote a bit about static analysis in Ruby. I want to dive deeper into a specific issue I once discovered in [Sorbet](https://sorbet.org) that has led me to discover a puzzling rabbit hole of language design flaws.
 
 ## Arrays of whatever
 
@@ -42,10 +42,10 @@ const totalSamplesPerSecond = (clip: AudioClip) =>
   clip.channels * clip.sampleRate;
 
 const audioClips: AudioClip[] = [{ channels: 2, sampleRate: 44100 }];
-pushClip(audioClips); // ???
+pushClip(audioClips); // no type error
 
 for (const clip of audioClips) {
-  console.log(totalSamplesPerSecond(clip)); // 88200, NaN
+  console.log(totalSamplesPerSecond(clip));
 }
 ```
 
@@ -53,7 +53,7 @@ for (const clip of audioClips) {
 
 Great. Not only does this falsely type check, it silently produces an absurd output of `NaN` samples per second for the stray `VideoClip`. All this with TypeScript's _strict_ flag, mind you.
 
-I had known for a long time that this was thing. I naively hoped that this was just a TypeScript quirk, among many others. But then I started using [Sorbet](https://sorbet.org):
+I had known for a long time that this was a thing. I naively hoped that this was just a TypeScript quirk, among many others. But then I started using [Sorbet](https://sorbet.org):
 
 ```ruby
 sig { params(objects: T::Array[Object]).void }
@@ -62,7 +62,7 @@ def push_object(objects)
 end
 
 ints = T.let [1, 2, 3], T::Array[Integer]
-push_object(ints) # ???
+push_object(ints)
 puts ints.sum
 ```
 
@@ -85,7 +85,7 @@ class Unsound
 end
 
 ints = [1, 2, 3] #: Array[Integer]
-Unsound.push_object(ints) # ???
+Unsound.push_object(ints)
 puts ints.sum
 ```
 
@@ -96,7 +96,7 @@ I was going to praise Java, of all things, for how it does this right. It does m
 ```java
 Integer[] ints = new Integer[1];
 Object[] objects = ints;
-objects[0] = new Object();
+objects[0] = new Object(); // runtime error
 ```
 
 Why is this a thing? It's not hard to find documentation on this.
@@ -175,7 +175,7 @@ class Variance {
 
     public static void main(String[] args) {
         ArrayList<Integer> ints = new ArrayList<>(List.of(1, 2, 3));
-        pushObject(ints); // error
+        pushObject(ints); // type error
     }
 }
 ```
@@ -195,7 +195,7 @@ def self.push_object(objects)
 end
 
 ints = [1, 2, 3] #: Array[Integer]
-push_object(ints) # error
+push_object(ints) # type error
 ```
 
 Or using Sorbet's syntax:
@@ -215,7 +215,7 @@ It's also worth giving C# an honorable mention here, because while it also uses 
 
 ## Conclusion
 
-Ultimately, the only _pragmatic_ thing about the array variance compromise I am currently willing to acknowledge is a reduced scope of work for the compiler implementation team. I wish there was more initiative and care out there among language designers to have the courage to avoid these types of issues. There are definitely performance implications for more complex type checkers, but seeing as Java compiles its wildcard generics in reasonable time for most common uses, I don't think this is realistically an issue and a valid argument that would warrant completely dismissing the idea.
+Ultimately, the only _pragmatic_ thing about the array variance compromise I am currently willing to acknowledge is a reduced scope of work for the compiler implementation team. I wish there was more initiative and care out there among language designers to have the courage to avoid these types of issues. There are definitely performance implications for more complex type checkers, but seeing as Java compiles its wildcard generics in reasonable time for most common uses, I don't think this is realistically an issue or a valid argument that would warrant completely dismissing the idea.
 
 Researching this you may also stumble upon mentions of the fact that implementing soundness for generic type systems is _undecidable in the general case_. This is true; with sufficient type gymnastics, the type checker can be put into a state where it will recurse indefinitely and never reach a solution. I don't think this is a good argument either. I won't try making an argument based on the frequency/rarity of these undecidable cases, because it's the same type of argument often used to justify the aforementioned compromises. I will, however, point out that undecidable generics will at worst result in **false negatives** as opposed to **false positives**. Moreover, type checkers will typically implement restrictions to avoid problems like non-termination in practice.
 
